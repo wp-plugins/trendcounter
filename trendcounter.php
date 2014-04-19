@@ -4,7 +4,7 @@
 Plugin Name:    trendcounter Stats for WordPress
 Plugin URI:     http://www.trendcounter.com
 Description:    See in real-time what is happening on your blog with trendcounter
-Version:        0.1
+Version:        0.2
 Author:         trendcounter
 Author URI:     http://www.trendcounter.com
 */
@@ -185,7 +185,10 @@ function tcwidget_options_content()
 
             if (isset($_POST[$key])) {
 
-                if ($key == TCWIDGET_POSITION && ($_POST[$key] != 'footer' && $_POST[$key] != 'widget')) {
+                if ($key == TCWIDGET_POSITION
+                    && ($_POST[$key] != 'footer'
+                    && $_POST[$key] != 'widget')
+                ) {
                     continue;
                 }
 
@@ -217,7 +220,7 @@ function tcwidget_options_content()
     <form method="post">
 
     <p>
-       Please <a href="http://www.trendcounter.com/login.htm" target="_blank">login</a> to your trendcounter.com account (or <a href="http://www.trendcounter.com/signup.htm" target="_blank">signup</a> for a new one) and go to the <b>Project HTML</b> area, where you can copy your personal WordPress settings for this plugin.
+       Please <a href="http://www.trendcounter.com/login/" target="_blank">login</a> to your trendcounter.com account (or <a href="http://www.trendcounter.com/signup/" target="_blank">signup</a> for a new one) and go to the <b>Project HTML</b> area, where you can copy your personal WordPress settings for this plugin.
     </p>
 
     <h3>Plugin Settings</h3>
@@ -250,7 +253,7 @@ function tcwidget_options_content()
             <td>
                 <b>Your key:</b> <?php echo tcwidget_get_config('key'); ?><br />
                 <b>Widget style:</b> <?php echo tcwidget_get_config('widget'); ?>
-                <br /><span class="description" style="width: 350px;word-wrap:break-word;display:block;">Need a new look? Something has changed? Go to trendcounter.com and edit your project. Then copy the settings here again.</span>
+                <br /><br /><span class="description" style="width: 350px;word-wrap:break-word;display:block;">Need a new look? Something has changed? Go to trendcounter.com, edit your project and copy the settings here again.</span>
             </td>
         </tr>
         <?php } ?>
