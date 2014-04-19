@@ -2,8 +2,8 @@
 Contributors: trendcounter
 Tags: trendcounter, stats, analytics, statistics, visitors, counter
 Requires at least: 3.1
-Tested up to: 3.2.1
-Stable tag: 0.1
+Tested up to: 3.9
+Stable tag: 0.2
 
 See in real-time what is happening on your blog with trendcounter
 
@@ -11,7 +11,8 @@ See in real-time what is happening on your blog with trendcounter
 == Description ==
 
 This is the official trendcounter Plugin for WordPress. It adds trendcounter either as Widget, or as Footer element to your blog.
-If you're interested in seeing what trendcounter has to offer, try out our [Demo](http://www.trendcounter.com/live/demo.htm)
+If you're interested in seeing what trendcounter has to offer, try out our [Demo](http://www.trendcounter.com/report/demo/)
+
  
 == Installation ==
 
@@ -36,8 +37,9 @@ No, never do that! Your visitors would be tracked multiple times.
 
 == Screenshots ==
 
-1. Administration interface 
-2. Example Stats Panel
+1. Administration interface
+2. Integration example
+3. Example real-time dashboard
 
 
 == Changelog ==
@@ -45,6 +47,8 @@ No, never do that! Your visitors would be tracked multiple times.
 = 0.1 =
 Initial release
 
+= 0.2 =
+Minor changes and readme updates
 
 == Upgrade Notice ==
 
