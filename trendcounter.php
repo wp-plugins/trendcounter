@@ -4,7 +4,7 @@
 Plugin Name:    trendcounter Stats for WordPress
 Plugin URI:     http://www.trendcounter.com
 Description:    See in real-time what is happening on your blog with trendcounter
-Version:        0.2
+Version:        0.3
 Author:         trendcounter
 Author URI:     http://www.trendcounter.com
 */
@@ -24,7 +24,6 @@ define('TCWIDGET_POSITION', 'tcwidget_position');
  *
  * @uses WP_Widget
  */
-
 class tcWidget extends WP_Widget
 {
 
@@ -100,7 +99,6 @@ class tcWidget extends WP_Widget
  * @access public
  * @return void
  */
-
 function myplugin_register_widgets()
 {
     register_widget('tcWidget');
@@ -114,7 +112,6 @@ function myplugin_register_widgets()
  * @access public
  * @return void
  */
-
 function tcwidget_debug($msg)
 {
 
@@ -133,7 +130,6 @@ function tcwidget_debug($msg)
  * @access public
  * @return void
  */
-
 function tcwidget_activate_plugin()
 {
     add_option('tcwidget_key', 'test');
@@ -146,7 +142,6 @@ function tcwidget_activate_plugin()
  * @access public
  * @return void
  */
-
 function tcwidget_options_add()
 {
 
@@ -168,7 +163,6 @@ function tcwidget_options_add()
  * @access public
  * @return void
  */
-
 function tcwidget_options_content()
 {
 
@@ -278,7 +272,6 @@ function tcwidget_options_content()
  * @access public
  * @return void
  */
-
 function tcwidget_add_error($msg)
 {
     return '<div class="error settings-error"><p><strong>' . $msg . '</strong></p></div>';
@@ -291,7 +284,6 @@ function tcwidget_add_error($msg)
  * @access public
  * @return void
  */
-
 function tcwidget_render()
 {
 
@@ -357,7 +349,7 @@ function tcwidget_render()
         _tcq.push(<?php echo $tcwidget_config; ?>);
         (function() {
         var e = document.createElement('script'); e.type = 'text/javascript'; e.async = true;
-        e.src = 'http://widgets.tcimg.com/v2/<?php echo tcwidget_get_config('widget') ?>.js'; var s = document.getElementsByTagName('script')[0];
+        e.src = 'http://s.tcimg.com/w/v2/<?php echo tcwidget_get_config('widget') ?>.js'; var s = document.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(e, s);
         })();
     </script>
@@ -378,7 +370,6 @@ function tcwidget_render()
  * @access public
  * @return void
  */
-
 function tcwidget_get_config($type)
 {
 
