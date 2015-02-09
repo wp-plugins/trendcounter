@@ -4,7 +4,7 @@
 Plugin Name:    trendcounter Stats for WordPress
 Plugin URI:     http://www.trendcounter.com
 Description:    See in real-time what is happening on your blog with trendcounter
-Version:        0.2
+Version:        0.4
 Author:         trendcounter
 Author URI:     http://www.trendcounter.com
 */
@@ -24,7 +24,6 @@ define('TCWIDGET_POSITION', 'tcwidget_position');
  *
  * @uses WP_Widget
  */
-
 class tcWidget extends WP_Widget
 {
 
@@ -100,7 +99,6 @@ class tcWidget extends WP_Widget
  * @access public
  * @return void
  */
-
 function myplugin_register_widgets()
 {
     register_widget('tcWidget');
@@ -114,7 +112,6 @@ function myplugin_register_widgets()
  * @access public
  * @return void
  */
-
 function tcwidget_debug($msg)
 {
 
@@ -133,7 +130,6 @@ function tcwidget_debug($msg)
  * @access public
  * @return void
  */
-
 function tcwidget_activate_plugin()
 {
     add_option('tcwidget_key', 'test');
@@ -146,7 +142,6 @@ function tcwidget_activate_plugin()
  * @access public
  * @return void
  */
-
 function tcwidget_options_add()
 {
 
@@ -168,7 +163,6 @@ function tcwidget_options_add()
  * @access public
  * @return void
  */
-
 function tcwidget_options_content()
 {
 
@@ -278,7 +272,6 @@ function tcwidget_options_content()
  * @access public
  * @return void
  */
-
 function tcwidget_add_error($msg)
 {
     return '<div class="error settings-error"><p><strong>' . $msg . '</strong></p></div>';
@@ -291,7 +284,6 @@ function tcwidget_add_error($msg)
  * @access public
  * @return void
  */
-
 function tcwidget_render()
 {
 
@@ -311,57 +303,31 @@ function tcwidget_render()
     }
 
     $tcwidget_config  = '[';
-    $tcwidget_config .= '\'' . tcwidget_get_config('widget')  . '\',';
-    $tcwidget_config .= ' \'' . tcwidget_get_config('key') . '\'';
+    $tcwidget_config .= '\'widget\', \'' . tcwidget_get_config('widget')  . '\'';
 
-    if (tcwidget_get_config('is_customized')) {
-
-        if (tcwidget_get_config('widget') == 'standard'
-            || tcwidget_get_config('widet') == 'blog'
-            || tcwidget_get_config('widget') == 'bblog'
-        ) {
-
-            $tcwidget_config .= ', \'' . tcwidget_get_config('background_color') . '\'';
-            $tcwidget_config .= ', \'' . tcwidget_get_config('font_color') . '\'';
-
-        } else if (tcwidget_get_config('widget') == 'flag') {
-
-            $tcwidget_config .= ', \'' . tcwidget_get_config('background_color') . '\'';
-            $tcwidget_config .= ', \'' . tcwidget_get_config('font_color') . '\'';
-            $tcwidget_config .= ', \'' . tcwidget_get_config('border_color') . '\'';
-            $tcwidget_config .= ', \'' . tcwidget_get_config('columns') . '\'';
-            $tcwidget_config .= ', \'' . tcwidget_get_config('max_rows') . '\'';
-            $tcwidget_config .= ', \'' . tcwidget_get_config('country_code') . '\'';
-
-        } else if (tcwidget_get_config('widget') == 'sidebar') {
-
-            $tcwidget_config .= ', \'' . tcwidget_get_config('position') . '\'';
-            $tcwidget_config .= ', \'' . tcwidget_get_config('background_color') . '\'';
-            $tcwidget_config .= ', \'' . tcwidget_get_config('font_color') . '\'';
-
-        }
-
+    if (tcwidget_get_config('widget') == 'sidebar') {
+        $tcwidget_config .= ', \'' . tcwidget_get_config('position') . '\'';
     }
 
     $tcwidget_config .= ']';
 
     ?>
     <style type="text/css">
-        #tcwidget_content {
+        .tcwidget-content {
             margin: <?php echo $margins; ?>;
         }
     </style>
-    <div id="tcwidget_content">
-    <script type="text/javascript" id="tc_<?php echo tcwidget_get_config('key'); ?>">
+    <div id="tc-<?php echo tcwidget_get_config('key'); ?>" class="tcwidget-content"></div>
+    <script type="text/javascript">
         var _tcq = _tcq || [];
         _tcq.push(<?php echo $tcwidget_config; ?>);
-        (function() {
-        var e = document.createElement('script'); e.type = 'text/javascript'; e.async = true;
-        e.src = 'http://widgets.tcimg.com/v2/<?php echo tcwidget_get_config('widget') ?>.js'; var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(e, s);
-        })();
+        _tcq.push(['init', '<?php echo tcwidget_get_config('key'); ?>']);
+        (function(d, s) {
+        var e = d.createElement('script'); e.type = 'text/javascript'; e.async = true;
+        e.src = 'http://s.tcimg.com/w/v3/trendcounter.js'; var f = d.getElementsByTagName('script')[0];
+        f.parentNode.insertBefore(e, f);
+        })(document, 'script');
     </script>
-    </div>
     <?php
 
     if ($center == true) {
@@ -378,7 +344,6 @@ function tcwidget_render()
  * @access public
  * @return void
  */
-
 function tcwidget_get_config($type)
 {
 
