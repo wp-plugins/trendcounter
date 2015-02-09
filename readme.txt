@@ -3,7 +3,7 @@ Contributors: trendcounter
 Tags: trendcounter, stats, analytics, statistics, visitors, counter
 Requires at least: 3.1
 Tested up to: 4.1
-Stable tag: 0.3
+Stable tag: 0.4
 
 See in real-time what is happening on your blog with trendcounter
 
@@ -52,6 +52,9 @@ Minor changes and readme updates
 
 = 0.3 =
 Minor changes
+
+= 0.4 =
+Integration of the new trendcounter.js API
 
 == Upgrade Notice ==
 
